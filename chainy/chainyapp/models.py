@@ -8,6 +8,7 @@ class Chain(models.Model):
 
 class Post(models.Model):
     chain = models.ForeignKey(Chain)
+    post_num = models.IntegerField()
     poster = models.CharField(max_length=50)
     time = models.DateTimeField()
     body = models.CharField(max_length=1000)

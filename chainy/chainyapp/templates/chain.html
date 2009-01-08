@@ -7,7 +7,8 @@
     <table border=1 cellpadding=0 cellspacing=0 width=100%>
         <tr><td>
             <table width=100%><tr><td>
-                {{ post.poster }}
+                <a href="/{{ chain.id }}/{{ post.post_num }}/">{{ post.post_num }}</a>
+                - {{ post.poster }}
             </td><td align=right>
                 {{ post.time }}
             </table>
