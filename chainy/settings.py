@@ -78,6 +78,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+
+    # http://hg.mozilla-hispano.org/DeadWisdom/migratory/wiki/Home
     'django.contrib.migratory', 
     'chainy.chainyapp'
 )
