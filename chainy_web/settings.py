@@ -1,5 +1,3 @@
-# Django settings for chainy project.
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -63,7 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'chainy.urls'
+ROOT_URLCONF = 'chainy_web.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -81,5 +79,5 @@ INSTALLED_APPS = (
 
     # http://hg.mozilla-hispano.org/DeadWisdom/migratory/wiki/Home
     'django.contrib.migratory', 
-    'chainy.chainyapp'
+    'chainy_web.chainyapp'
 )

@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
-from chainy.chainyapp.models import Chain, Post
+from chainy_web.chainyapp.models import Chain, Post
 
 def main(request):
     chain_list = Chain.objects.all()
