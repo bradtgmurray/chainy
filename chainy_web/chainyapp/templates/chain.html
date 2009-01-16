@@ -18,5 +18,11 @@
         </tr></td>
     </table>
     {% endfor %}
+
+    <form action"/chains/{{ chain.id }}/" method="post">
+        <input type="text" name="poster" />
+        <input type="text" name="body" />
+        <input type="submit" name="Post" />
+    </form>
 </body>
 </html>

@@ -10,7 +10,7 @@ class Post(models.Model):
     chain = models.ForeignKey(Chain)
     post_num = models.IntegerField()
     poster = models.CharField(max_length=50)
-    time = models.DateTimeField()
+    time = models.DateTimeField(auto_now_add=True)
     body = models.CharField(max_length=1000)
 
     def __unicode__(self):

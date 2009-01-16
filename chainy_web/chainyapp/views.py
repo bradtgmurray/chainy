@@ -13,8 +13,8 @@ def main(request):
 def chains(request):
     if request.method == 'POST':
         try:
-            new_chain_name = request.POST['name']
-            c = Chain(name= request.POST['name'])
+            name = request.POST['name']
+            c = Chain(name=name) 
             c.save()
 
             redirect_url = reverse('chainy_web.chainyapp.views.main')
@@ -22,7 +22,7 @@ def chains(request):
         except (KeyError):
             return HttpResponseServerError('name not specified')
     else:
-        return HttpResponseServerError('Only allow POST to this page, NYI')
+        return HttpResponseServerError('Only allow POST, NYI')
 
 def chain(request, chain_id):
     if request.method == 'GET':
@@ -30,6 +30,33 @@ def chain(request, chain_id):
     
         return render_to_response('chainyapp/templates/chain.html', 
             {'chain' : chain})
+    elif request.method == 'POST':
+        try:
+            chain = Chain.objects.get(pk=chain_id)
+            poster = request.POST['poster']
+            body = request.POST['body']
+            # Got to find a better way to do this...
+            post_num = chain.post_set.count() + 1
+
+            p = Post(chain=chain, post_num=post_num,
+                     poster=poster, body=body)
+            p.save()
+
+            redirect_url = reverse('chainy_web.chainyapp.views.chain',
+                                   args=[chain_id])
+            return HttpResponseRedirect(redirect_url)
+        
+        except(KeyError):
+            if 'poster' not in request.POST:
+                return HttpResponseServerError('poster not specified')
+            elif 'body' not in request.POST:
+                return HttpResponseServerError('body not specified')
+            else:
+                return HttpResponseServerError('dunno')
+    else:
+        HttpResponseServerError('Only allow POST/GET, NYI')
+
+    HttpResponseServerError('Something terrible has happened')
 
 def post(request, chain_id, post_num):
     chain = get_object_or_404(Chain, pk=chain_id)
