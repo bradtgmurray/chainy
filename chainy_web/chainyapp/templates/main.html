@@ -6,9 +6,14 @@
     {% for chain in chain_list %}
     <table border=1 cellpadding=0 cellspacing=0 width=100%>
         <tr><td>
-            <a href="{{ chain.id }}/">{{ chain.name }}</a>
+            <a href="/chains/{{ chain.id }}/">{{ chain.name }}</a>
         </tr></td>
     </table>
     {% endfor %}
+    
+    <form action="/chains/" method="post">
+        <input type="text" name="name" />
+        <input type="submit" value="Create" />
+    </form>
 </body>
 </html>
